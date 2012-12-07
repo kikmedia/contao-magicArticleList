@@ -1,0 +1,31 @@
+<nav class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+<?php if ($this->headline): ?>
+
+<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+<?php endif; ?>
+<ul>
+<?php foreach ($this->articles as $article): ?>
+  <li><a href="<?php echo $this->request; ?>#<?php echo $article['id']; ?>" title="<?php echo $article['title']; ?>"><?php echo $article['link']; ?></a></li>
+<?php endforeach; ?>
+</ul>
+
+</nav>
+
+<?php if($this->anchor_navigation): ?>
+<?php $GLOBALS['TL_MOOTOOLS'][] = '<script src="/system/modules/magicArticleList/html/js/NavSimple.js"></script>'; ?>
+<script>
+window.addEvent('domready',function(){
+  
+  var ns = new NavSimple({
+    sectionLinks: "<?php echo str_replace('"','',str_replace('id="','#',$this->cssID));?> li a",
+    sections: '.mod_article',
+    hashPathOnLoad: true,
+    foldRatio: 0.6,
+    offset: {
+      x: 0,
+      y: $('header').getSize().y
+    }
+  }).activate();
+});
+</script>
+<?php endif; ?>
