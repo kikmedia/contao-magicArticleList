@@ -2,6 +2,7 @@
 
 ##Beschreibung
 Artikelliste von Contao per MooTools scrollbar machen.
+Einzelne Artikel können über die Artikeleinstellungen von der Artikelnavigation ausgeschlossen werden.
 
 ##Abhängigkeiten
 - Contao 2.11.*
